@@ -290,11 +290,12 @@
 <p class="font-body-md text-body-md text-on-surface-variant">Answer a few questions to generate a professional, legally-structured appeal letter.</p>
 </div>
 <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg ambient-shadow-1 flex flex-col gap-lg">
+<form id="appeal-form" action="/api/appeal" method="POST" enctype="multipart/form-data">
 <!-- Platform Selector -->
 <div class="flex flex-col gap-sm">
 <label class="font-label-md text-label-md text-on-surface" for="platform">Select Platform</label>
 <div class="relative">
-<select class="w-full appearance-none bg-[#F1F5F9] border border-outline-variant text-on-surface font-body-md text-body-md rounded-DEFAULT px-md py-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" id="platform">
+<select class="w-full appearance-none bg-[#F1F5F9] border border-outline-variant text-on-surface font-body-md text-body-md rounded-DEFAULT px-md py-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" id="platform" name="platform">
 <option disabled="" selected="" value="">Choose platform</option>
 <option value="uber">Uber</option>
 <option value="lyft">Lyft</option>
@@ -308,24 +309,26 @@
 </div>
 </div>
 <!-- Reason Text Area -->
-<div class="flex flex-col gap-sm">
+<div class="flex flex-col gap-sm mt-lg">
 <label class="font-label-md text-label-md text-on-surface" for="reason">Briefly describe why you were deactivated</label>
-<textarea class="w-full bg-[#F1F5F9] border border-outline-variant text-on-surface font-body-md text-body-md rounded-DEFAULT p-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all resize-none" id="reason" placeholder="e.g., I was deactivated due to false customer reports of not delivering food, even though I have photo evidence for all deliveries." rows="4"></textarea>
+<textarea class="w-full bg-[#F1F5F9] border border-outline-variant text-on-surface font-body-md text-body-md rounded-DEFAULT p-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all resize-none" id="reason" name="reason" placeholder="e.g., I was deactivated due to false customer reports of not delivering food, even though I have photo evidence for all deliveries." rows="4"></textarea>
 </div>
 <!-- Evidence Upload -->
-<div class="flex flex-col gap-sm">
+<div class="flex flex-col gap-sm mt-lg">
 <label class="font-label-md text-label-md text-on-surface">Upload Screenshots/Evidence</label>
-<div class="border-2 border-dashed border-outline-variant rounded-lg p-xl flex flex-col items-center justify-center text-center cursor-pointer hover:bg-surface-container-low transition-colors bg-[#F1F5F9]">
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-xl flex flex-col items-center justify-center text-center cursor-pointer hover:bg-surface-container-low transition-colors bg-[#F1F5F9] relative">
 <span class="material-symbols-outlined text-[32px] text-on-surface-variant mb-sm">upload_file</span>
 <p class="font-body-sm text-body-sm text-on-surface-variant mb-xs">Drag and drop files here, or click to browse</p>
 <p class="font-label-sm text-label-sm text-outline">Supports PNG, JPG, PDF (Max 10MB)</p>
+<input type="file" name="evidence" id="evidence" accept="image/png, image/jpeg, application/pdf" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
 </div>
 </div>
 <!-- CTA -->
-<button class="w-full bg-secondary text-on-secondary py-md rounded-lg font-label-md text-label-md hover:bg-on-secondary-fixed-variant transition-colors shadow-sm flex items-center justify-center gap-sm mt-sm">
-                            Draft Legal Appeal
+<button type="submit" class="w-full bg-secondary text-on-secondary py-md rounded-lg font-label-md text-label-md hover:bg-on-secondary-fixed-variant transition-colors shadow-sm flex items-center justify-center gap-sm mt-sm">
+                            Draft My Appeal
                             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
 </button>
+</form>
 </div>
 </section>
 <!-- Right Side (Preview) -->
@@ -367,8 +370,9 @@
 <!-- Unlock CTA -->
 <button class="w-full bg-surface-container-lowest border border-secondary text-secondary py-md rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm flex items-center justify-center gap-sm">
 <span class="material-symbols-outlined">payments</span>
-                            Pay $5 to Unlock &amp; Download (PDF / DOCX)
+                            Pay $19 to Unlock &amp; Download (PDF / DOCX)
                         </button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-sm">This tool provides informational assistance, not legal advice.</p>
 </div>
 </section>
 </div>
