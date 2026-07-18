@@ -324,7 +324,7 @@
 </div>
 </div>
 <!-- CTA -->
-<button type="submit" class="w-full bg-secondary text-on-secondary py-md rounded-lg font-label-md text-label-md hover:bg-on-secondary-fixed-variant transition-colors shadow-sm flex items-center justify-center gap-sm mt-sm">
+<button id="submit-button" type="submit" class="w-full bg-secondary text-on-secondary py-md rounded-lg font-label-md text-label-md hover:bg-on-secondary-fixed-variant transition-colors shadow-sm flex items-center justify-center gap-sm mt-sm">
                             Draft My Appeal
                             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
 </button>
@@ -341,14 +341,14 @@
 <div class="flex-1 bg-surface-container-lowest border border-outline-variant rounded-lg p-lg ambient-shadow-1 relative overflow-hidden flex flex-col">
 <!-- Document Header Mockup -->
 <div class="flex justify-between items-start mb-lg border-b border-outline-variant pb-md">
-<div class="flex flex-col gap-xs blur-text">
+<div id="document-header-1" class="flex flex-col gap-xs blur-text">
 <div class="h-4 bg-surface-variant w-32 rounded"></div>
 <div class="h-4 bg-surface-variant w-48 rounded"></div>
 </div>
-<div class="h-6 bg-surface-variant w-24 rounded blur-text"></div>
+<div id="document-header-2" class="h-6 bg-surface-variant w-24 rounded blur-text"></div>
 </div>
 <!-- Document Body Mockup (Blurred) -->
-<div class="flex-1 flex flex-col gap-sm blur-text text-on-surface-variant font-body-sm">
+<div id="document-body" class="flex-1 flex flex-col gap-sm blur-text text-on-surface-variant font-body-sm whitespace-pre-wrap">
 <p>Dear Support Team,</p>
 <p>I am writing to formally appeal my recent deactivation from your platform. I firmly believe this action was taken in error and without full consideration of the facts surrounding my account standing and recent activities.</p>
 <div class="h-3 bg-surface-variant w-full rounded mt-sm"></div>
@@ -361,14 +361,14 @@
 <div class="h-3 bg-surface-variant w-[92%] rounded"></div>
 </div>
 <!-- Overlay -->
-<div class="absolute inset-0 bg-surface/50 backdrop-blur-[2px] flex items-center justify-center">
+<div id="lock-overlay" class="absolute inset-0 bg-surface/50 backdrop-blur-[2px] flex items-center justify-center">
 <div class="w-16 h-16 bg-surface rounded-full shadow-md flex items-center justify-center border border-outline-variant">
 <span class="material-symbols-outlined text-[32px] text-secondary">lock</span>
 </div>
 </div>
 </div>
 <!-- Unlock CTA -->
-<button class="w-full bg-surface-container-lowest border border-secondary text-secondary py-md rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm flex items-center justify-center gap-sm">
+<button id="pay-button" class="w-full bg-surface-container-lowest border border-secondary text-secondary py-md rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm flex items-center justify-center gap-sm">
 <span class="material-symbols-outlined">payments</span>
                             Pay $19 to Unlock &amp; Download (PDF / DOCX)
                         </button>
@@ -378,4 +378,80 @@
 </div>
 </main>
 </div>
+<script>
+    document.getElementById('appeal-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const submitBtn = document.getElementById('submit-button');
+        const originalBtnText = submitBtn.innerHTML;
+
+        // Show loading state
+        submitBtn.innerHTML = 'Generating... <span class="material-symbols-outlined animate-spin" style="font-variation-settings: \'FILL\' 1;">refresh</span>';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('/api/appeal', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                // Remove blur
+                document.getElementById('document-header-1').classList.remove('blur-text');
+                document.getElementById('document-header-2').classList.remove('blur-text');
+                const docBody = document.getElementById('document-body');
+                docBody.classList.remove('blur-text');
+
+                // Hide lock overlay
+                document.getElementById('lock-overlay').style.display = 'none';
+
+                // Inject generated text
+                docBody.textContent = data.appeal;
+            } else {
+                alert(data.error || 'Failed to generate appeal.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while generating the appeal.');
+        } finally {
+            // Reset button
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        }
+    });
+
+    document.getElementById('pay-button').addEventListener('click', async () => {
+        const payBtn = document.getElementById('pay-button');
+        const originalBtnText = payBtn.innerHTML;
+
+        payBtn.innerHTML = 'Redirecting... <span class="material-symbols-outlined animate-spin">refresh</span>';
+        payBtn.disabled = true;
+
+        try {
+            const response = await fetch('/api/checkout', {
+                method: 'POST'
+            });
+
+            const data = await response.json();
+
+            if (data.url) {
+                window.location.href = data.url;
+            } else {
+                alert('Failed to initiate checkout.');
+                payBtn.innerHTML = originalBtnText;
+                payBtn.disabled = false;
+            }
+        } catch (error) {
+            console.error('Checkout error:', error);
+            alert('An error occurred during checkout.');
+            payBtn.innerHTML = originalBtnText;
+            payBtn.disabled = false;
+        }
+    });
+</script>
 </body></html>

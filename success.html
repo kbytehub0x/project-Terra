@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>GigRescue AI - Payment Successful</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#45464d",
+                      "outline": "#76777d",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-secondary-fixed": "#001a42",
+                      "error": "#ba1a1a",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#7c839b",
+                      "on-secondary-container": "#fefcff",
+                      "on-background": "#0b1c30",
+                      "on-tertiary-fixed": "#002113",
+                      "on-primary-fixed": "#131b2e",
+                      "secondary-container": "#2170e4",
+                      "primary-container": "#131b2e",
+                      "primary-fixed-dim": "#bec6e0",
+                      "inverse-primary": "#bec6e0",
+                      "on-secondary-fixed-variant": "#004395",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#cbdbf5",
+                      "primary-fixed": "#dae2fd",
+                      "primary": "#000000",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#c6c6cd",
+                      "surface": "#f8f9ff",
+                      "secondary-fixed": "#d8e2ff",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#002113",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-tint": "#565e74",
+                      "surface-bright": "#f8f9ff",
+                      "tertiary": "#000000",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "background": "#f8f9ff",
+                      "surface-variant": "#d3e4fe",
+                      "surface-container": "#e5eeff",
+                      "inverse-surface": "#213145",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "surface-container-low": "#eff4ff",
+                      "on-error": "#ffffff",
+                      "secondary": "#0058be",
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-surface": "#0b1c30",
+                      "on-tertiary-container": "#009668"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "gutter": "24px",
+                      "xl": "32px",
+                      "xs": "4px",
+                      "container-max": "1280px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "sm": "8px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        .ambient-shadow-1 {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex">
+    <!-- SideNavBar -->
+    <nav class="hidden md:flex flex-col h-screen fixed left-0 top-0 w-[280px] bg-surface-container dark:bg-primary-container p-md z-20">
+        <!-- Brand -->
+        <div class="mb-xl flex flex-col gap-sm p-sm">
+            <span class="font-headline-sm text-headline-sm font-extrabold text-on-surface">GigRescue AI</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Legal Protection</span>
+        </div>
+        <!-- Navigation Tabs -->
+        <ul class="flex flex-col gap-sm flex-grow">
+            <li>
+                <a class="flex items-center gap-md p-sm bg-secondary-container text-on-secondary-container rounded-lg font-bold scale-98 transition-transform" href="index.html">
+                    <span class="material-symbols-outlined">gavel</span>
+                    <span class="font-label-md text-label-md">Generator</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:bg-surface-container-highest transition-all" href="#">
+                    <span class="material-symbols-outlined">description</span>
+                    <span class="font-label-md text-label-md">My Appeals</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:bg-surface-container-highest transition-all" href="#">
+                    <span class="material-symbols-outlined">payments</span>
+                    <span class="font-label-md text-label-md">Earnings</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:bg-surface-container-highest transition-all" href="#">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span class="font-label-md text-label-md">Settings</span>
+                </a>
+            </li>
+        </ul>
+        <!-- CTA & Footer -->
+        <div class="mt-auto flex flex-col gap-md pt-lg border-t border-outline-variant">
+            <button class="w-full bg-secondary text-on-secondary py-sm px-md rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
+                Start New Claim
+            </button>
+            <ul class="flex flex-col gap-xs">
+                <li>
+                    <a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+                        <span class="material-symbols-outlined">support_agent</span>
+                        <span class="font-label-md text-label-md">Support</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+                        <span class="material-symbols-outlined">logout</span>
+                        <span class="font-label-md text-label-md">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 ml-0 md:ml-[280px] flex flex-col min-h-screen">
+        <!-- TopNavBar (Mobile) -->
+        <header class="flex justify-between items-center px-lg py-sm w-full bg-surface dark:bg-on-background shadow-sm sticky top-0 z-10 md:hidden border-b border-outline-variant">
+            <span class="text-headline-md font-headline-md font-bold text-on-background dark:text-inverse-on-surface">GigRescue AI</span>
+            <div class="flex items-center gap-md">
+                <button class="text-secondary dark:text-secondary-fixed hover:text-secondary transition-colors duration-200 scale-95 duration-150">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <button class="text-secondary dark:text-secondary-fixed hover:text-secondary transition-colors duration-200 scale-95 duration-150">
+                    <span class="material-symbols-outlined">help</span>
+                </button>
+                <div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant">
+                    <img alt="Gig worker profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwqRa9H6qoRRjVgqrRJ_WQuwxpGIOSN9kcwI-ABrsPDmctx-nypsvoWT_pFNcOtbc1YCFwQTRTFEhrFProBHzVM93cUGBbrufMMBhvMWvWVPqKsLu1T2PtcB6jPKAHno9jLqizADrKk8fk6_oj3aqbSQwZJlW7b31_z0pLJougaGA67cbEpFMKMgbfnlzNGNpd185XbDHFRSY6Ryu3tRjgrq51DFNuIfEHKr26oakb2XXUAGObX0h2-w"/>
+                </div>
+            </div>
+        </header>
+
+        <!-- Desktop Header -->
+        <header class="hidden md:flex justify-end items-center px-xl py-md w-full bg-surface shadow-sm sticky top-0 z-10">
+            <div class="flex items-center gap-md">
+                <button class="text-secondary hover:opacity-80 transition-opacity">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <button class="text-secondary hover:opacity-80 transition-opacity">
+                    <span class="material-symbols-outlined">help</span>
+                </button>
+                <div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant">
+                    <img alt="Gig worker profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx63IaWlHFAUG3UkWuDZ7ptVpL_wcngNjAITIYK4N4zxkA4avYwRepwjYtIo6UYWpqeqtddJsA9SfI0cxb0NxqCHbZU3IPVi3IZtm-f4mi5o41pbI_p-2HYYJ7V45LB9qx2ndiCpgOw6Qd1DWgf-yLzmre7hA8Bb0JodZvOcjME11IYL7wck8yGBH0uCH2W0-KpRvzo9XizAr4b94qfthBovIEzWp2oAXaTAMkjyxKFemjI7OF1IqzpA"/>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Content -->
+        <main class="flex-1 p-md md:p-xl max-w-container-max mx-auto w-full flex items-center justify-center">
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-xl ambient-shadow-1 flex flex-col items-center justify-center text-center max-w-[600px] w-full py-[60px]">
+                <div class="w-20 h-20 bg-[#4edea3]/20 rounded-full flex items-center justify-center mb-lg border border-[#4edea3]">
+                    <span class="material-symbols-outlined text-[48px] text-[#009668]">check_circle</span>
+                </div>
+                <h1 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Payment Successful!</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-[80%]">Thank you for your purchase. Your formally structured deactivation appeal is unlocked and ready to download.</p>
+
+                <div class="flex flex-col sm:flex-row gap-md w-full max-w-[400px]">
+                    <button class="flex-1 bg-secondary text-on-secondary py-md rounded-lg font-label-md text-label-md hover:bg-on-secondary-fixed-variant transition-colors shadow-sm flex items-center justify-center gap-sm">
+                        <span class="material-symbols-outlined">picture_as_pdf</span>
+                        Download PDF
+                    </button>
+                    <button class="flex-1 bg-surface-container-lowest border border-secondary text-secondary py-md rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm flex items-center justify-center gap-sm">
+                        <span class="material-symbols-outlined">description</span>
+                        Download DOCX
+                    </button>
+                </div>
+                <a href="index.html" class="mt-lg font-label-sm text-label-sm text-secondary hover:underline">Return to Dashboard</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
