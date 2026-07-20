@@ -614,11 +614,13 @@
         if (e.target.files && e.target.files.length > 0) {
             const fileName = e.target.files[0].name;
             defaultUi.classList.add('hidden');
+            defaultUi.classList.remove('flex');
             successUi.classList.remove('hidden');
             successUi.classList.add('flex');
             filenameDisplay.textContent = fileName;
         } else {
             defaultUi.classList.remove('hidden');
+            defaultUi.classList.add('flex');
             successUi.classList.add('hidden');
             successUi.classList.remove('flex');
             filenameDisplay.textContent = '';
