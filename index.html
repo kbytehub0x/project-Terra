@@ -204,25 +204,25 @@
 <!-- Navigation Tabs -->
 <ul class="flex flex-col gap-sm flex-grow">
 <li>
-<a class="flex items-center gap-md p-sm bg-secondary-container text-on-secondary-container rounded-lg font-bold scale-98 transition-transform" href="#">
+<a id="nav-generator" class="flex items-center gap-md p-sm bg-secondary-container text-on-secondary-container rounded-lg font-bold scale-98 transition-transform cursor-pointer">
 <span class="material-symbols-outlined">gavel</span>
 <span class="font-label-md text-label-md">Generator</span>
 </a>
 </li>
 <li>
-<a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:bg-surface-container-highest transition-all" href="#">
+<a id="nav-my-appeals" class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:bg-surface-container-highest transition-all cursor-pointer">
 <span class="material-symbols-outlined">description</span>
 <span class="font-label-md text-label-md">My Appeals</span>
 </a>
 </li>
 <li>
-<a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:bg-surface-container-highest transition-all" href="#">
+<a id="nav-earnings" class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:bg-surface-container-highest transition-all cursor-pointer">
 <span class="material-symbols-outlined">payments</span>
 <span class="font-label-md text-label-md">Earnings</span>
 </a>
 </li>
 <li>
-<a class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:bg-surface-container-highest transition-all" href="#">
+<a id="nav-settings" class="flex items-center gap-md p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:bg-surface-container-highest transition-all cursor-pointer">
 <span class="material-symbols-outlined">settings</span>
 <span class="font-label-md text-label-md">Settings</span>
 </a>
@@ -282,6 +282,7 @@
 </header>
 <!-- Main Dashboard Content -->
 <main class="flex-1 p-md md:p-xl max-w-container-max mx-auto w-full">
+<div id="view-generator" class="tab-view block">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter lg:gap-xl">
 <!-- Left Side (Form) -->
 <section class="flex flex-col gap-lg">
@@ -320,7 +321,7 @@
 <span class="material-symbols-outlined text-[32px] text-on-surface-variant mb-sm">upload_file</span>
 <p class="font-body-sm text-body-sm text-on-surface-variant mb-xs">Drag and drop files here, or click to browse</p>
 <p class="font-label-sm text-label-sm text-outline">Supports PNG, JPG, PDF (Max 10MB)</p>
-<input type="file" name="evidence" id="evidence" accept="image/png, image/jpeg, application/pdf" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+<input type="file" name="evidence" id="evidence" accept="image/*,application/pdf,.pdf,.png,.jpg,.jpeg" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
 </div>
 </div>
 <!-- CTA -->
@@ -376,9 +377,153 @@
 </div>
 </section>
 </div>
+</div>
+<div id="view-my-appeals" class="tab-view hidden">
+<div class="flex flex-col gap-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">My Appeals</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">View and manage your generated appeal letters.</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg ambient-shadow-1 overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-md font-label-md text-label-md text-on-surface">Date</th>
+<th class="p-md font-label-md text-label-md text-on-surface">Platform</th>
+<th class="p-md font-label-md text-label-md text-on-surface">Status</th>
+<th class="p-md font-label-md text-label-md text-on-surface text-right">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors">
+<td class="p-md font-body-sm text-body-sm text-on-surface">Oct 24, 2023</td>
+<td class="p-md font-body-sm text-body-sm text-on-surface">Uber</td>
+<td class="p-md"><span class="bg-tertiary-fixed text-on-tertiary-fixed px-sm py-xs rounded-full font-label-sm text-label-sm">Resolved</span></td>
+<td class="p-md text-right"><button class="text-secondary hover:underline font-label-sm text-label-sm">View PDF</button></td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors">
+<td class="p-md font-body-sm text-body-sm text-on-surface">Nov 02, 2023</td>
+<td class="p-md font-body-sm text-body-sm text-on-surface">DoorDash</td>
+<td class="p-md"><span class="bg-surface-variant text-on-surface-variant px-sm py-xs rounded-full font-label-sm text-label-sm">Pending</span></td>
+<td class="p-md text-right"><button class="text-secondary hover:underline font-label-sm text-label-sm">View PDF</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="view-earnings" class="tab-view hidden">
+<div class="flex flex-col gap-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Earnings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Track the estimated value of your recovered gig accounts.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg ambient-shadow-1 flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant">Estimated Recovered Earnings</span>
+<span class="font-headline-lg text-headline-lg text-on-surface">$4,250.00</span>
+<span class="font-label-sm text-label-sm text-tertiary-fixed-dim flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">trending_up</span> +12% this month</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg ambient-shadow-1 flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant">Appeals Won</span>
+<span class="font-headline-lg text-headline-lg text-on-surface">3</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Out of 4 submitted</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg ambient-shadow-1 flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-on-surface-variant">Active Platforms</span>
+<span class="font-headline-lg text-headline-lg text-on-surface">Uber, Lyft</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Currently in good standing</span>
+</div>
+</div>
+</div>
+</div>
+<div id="view-settings" class="tab-view hidden">
+<div class="flex flex-col gap-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your profile and account preferences.</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg ambient-shadow-1 flex flex-col gap-md max-w-2xl">
+<div class="flex items-center gap-md border-b border-outline-variant pb-md">
+<div class="w-16 h-16 rounded-full bg-surface-variant overflow-hidden border border-outline-variant">
+<img alt="Gig worker profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwqRa9H6qoRRjVgqrRJ_WQuwxpGIOSN9kcwI-ABrsPDmctx-nypsvoWT_pFNcOtbc1YCFwQTRTFEhrFProBHzVM93cUGBbrufMMBhvMWvWVPqKsLu1T2PtcB6jPKAHno9jLqizADrKk8fk6_oj3aqbSQwZJlW7b31_z0pLJougaGA67cbEpFMKMgbfnlzNGNpd185XbDHFRSY6Ryu3tRjgrq51DFNuIfEHKr26oakb2XXUAGObX0h2-w"/>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Alex Gigworker</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">alex.gig@example.com</p>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-md text-label-md text-on-surface">Full Name</label>
+<input type="text" value="Alex Gigworker" class="w-full bg-[#F1F5F9] border border-outline-variant text-on-surface font-body-md text-body-md rounded-DEFAULT px-md py-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" disabled>
+</div>
+<div class="flex flex-col gap-sm">
+<label class="font-label-md text-label-md text-on-surface">Email Address</label>
+<input type="email" value="alex.gig@example.com" class="w-full bg-[#F1F5F9] border border-outline-variant text-on-surface font-body-md text-body-md rounded-DEFAULT px-md py-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" disabled>
+</div>
+<button class="bg-surface-variant text-on-surface-variant py-sm px-md rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors w-fit mt-sm" disabled>
+    Save Changes (Demo)
+</button>
+</div>
+</div>
+</div>
 </main>
 </div>
 <script>
+    // Tab Switcher Logic
+    const navLinks = {
+        'nav-generator': 'view-generator',
+        'nav-my-appeals': 'view-my-appeals',
+        'nav-earnings': 'view-earnings',
+        'nav-settings': 'view-settings'
+    };
+
+    const activeClasses = ['bg-secondary-container', 'text-on-secondary-container', 'font-bold'];
+    const inactiveClasses = ['text-on-surface-variant', 'hover:bg-surface-container-high', 'hover:bg-surface-container-highest'];
+
+    function switchTab(clickedId) {
+        // Hide all views
+        document.querySelectorAll('.tab-view').forEach(view => {
+            view.classList.remove('block');
+            view.classList.add('hidden');
+        });
+
+        // Reset all nav links styles
+        Object.keys(navLinks).forEach(navId => {
+            const el = document.getElementById(navId);
+            if(el) {
+                el.classList.remove(...activeClasses);
+                el.classList.add(...inactiveClasses);
+            }
+        });
+
+        // Show selected view
+        const targetViewId = navLinks[clickedId];
+        const targetView = document.getElementById(targetViewId);
+        if(targetView) {
+            targetView.classList.remove('hidden');
+            targetView.classList.add('block');
+        }
+
+        // Highlight selected nav link
+        const activeNav = document.getElementById(clickedId);
+        if(activeNav) {
+            activeNav.classList.remove(...inactiveClasses);
+            activeNav.classList.add(...activeClasses);
+        }
+    }
+
+    // Attach event listeners
+    Object.keys(navLinks).forEach(navId => {
+        const el = document.getElementById(navId);
+        if(el) {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchTab(navId);
+            });
+        }
+    });
+
     document.getElementById('appeal-form').addEventListener('submit', async (e) => {
         e.preventDefault();
 
