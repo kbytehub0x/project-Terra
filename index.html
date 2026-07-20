@@ -318,9 +318,15 @@
 <div class="flex flex-col gap-sm mt-lg">
 <label class="font-label-md text-label-md text-on-surface">Upload Screenshots/Evidence</label>
 <div class="border-2 border-dashed border-outline-variant rounded-lg p-xl flex flex-col items-center justify-center text-center cursor-pointer hover:bg-surface-container-low transition-colors bg-[#F1F5F9] relative">
+<div id="evidence-default-ui" class="flex flex-col items-center justify-center">
 <span class="material-symbols-outlined text-[32px] text-on-surface-variant mb-sm">upload_file</span>
 <p class="font-body-sm text-body-sm text-on-surface-variant mb-xs">Drag and drop files here, or click to browse</p>
 <p class="font-label-sm text-label-sm text-outline">Supports PNG, JPG, PDF (Max 10MB)</p>
+</div>
+<div id="evidence-success-ui" class="hidden flex-col items-center justify-center">
+<span class="material-symbols-outlined text-[32px] text-[#009668] mb-sm">check_circle</span>
+<p id="evidence-filename" class="font-body-md text-body-md text-on-surface font-bold"></p>
+</div>
 <input type="file" name="evidence" id="evidence" accept="image/*,application/pdf,.pdf,.png,.jpg,.jpeg" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
 </div>
 </div>
@@ -596,6 +602,26 @@
             alert('An error occurred during checkout.');
             payBtn.innerHTML = originalBtnText;
             payBtn.disabled = false;
+        }
+    });
+
+    // Evidence file upload listener
+    document.getElementById('evidence').addEventListener('change', function(e) {
+        const defaultUi = document.getElementById('evidence-default-ui');
+        const successUi = document.getElementById('evidence-success-ui');
+        const filenameDisplay = document.getElementById('evidence-filename');
+
+        if (e.target.files && e.target.files.length > 0) {
+            const fileName = e.target.files[0].name;
+            defaultUi.classList.add('hidden');
+            successUi.classList.remove('hidden');
+            successUi.classList.add('flex');
+            filenameDisplay.textContent = fileName;
+        } else {
+            defaultUi.classList.remove('hidden');
+            successUi.classList.add('hidden');
+            successUi.classList.remove('flex');
+            filenameDisplay.textContent = '';
         }
     });
 </script>
