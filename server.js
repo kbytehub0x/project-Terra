@@ -10,6 +10,14 @@ const { GoogleGenAI } = require('@google/genai');
 const upload = multer({
     storage: multer.memoryStorage(),
     limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+    fileFilter: (req, file, cb) => {
+        const allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+        if (allowedMimeTypes.includes(file.mimetype)) {
+            cb(null, true);
+        } else {
+            cb(new Error('Invalid file type. Only JPEG, JPG, PNG, and PDF are allowed.'));
+        }
+    }
 });
 
 const Stripe = require('stripe');
@@ -44,10 +52,14 @@ Please provide the full text of the appeal letter.`;
         contents.push(prompt);
 
         if (file) {
+            let mimeType = file.mimetype;
+            if (mimeType === 'image/jpg') {
+                mimeType = 'image/jpeg';
+            }
             contents.push({
                 inlineData: {
                     data: file.buffer.toString('base64'),
-                    mimeType: file.mimetype
+                    mimeType: mimeType
                 }
             });
         }
