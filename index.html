@@ -339,7 +339,7 @@
 </div>
 </section>
 <!-- Right Side (Preview) -->
-<section class="flex flex-col gap-lg h-full">
+<section class="flex flex-col gap-lg h-full select-none">
 <div>
 <h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Letter Preview</h2>
 <p class="font-body-sm text-body-sm text-on-surface-variant opacity-0">Spacer</p> <!-- Spacer to align with left title -->
@@ -552,14 +552,7 @@
             const data = await response.json();
 
             if (data.success) {
-                // Remove blur
-                document.getElementById('document-header-1').classList.remove('blur-text');
-                document.getElementById('document-header-2').classList.remove('blur-text');
                 const docBody = document.getElementById('document-body');
-                docBody.classList.remove('blur-text');
-
-                // Hide lock overlay
-                document.getElementById('lock-overlay').style.display = 'none';
 
                 // Inject generated text
                 docBody.textContent = data.appeal;
